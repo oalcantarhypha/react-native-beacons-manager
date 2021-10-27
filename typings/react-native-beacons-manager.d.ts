@@ -7,6 +7,17 @@ declare module 'react-native-beacons-manager' {
     major?: number
   }
 
+  export interface NotificationData  {
+    channelId: string,
+    notificationId: number,
+    contentTitle: string,
+    contentMessage: string,
+    drawableIcon: string,
+    showWhen: boolean,
+    priority?: string,
+    visibility?: string,
+  }
+
   export type AuthorizationStatus =
     | 'authorizedAlways'
     | 'authorizedWhenInUse'
@@ -55,6 +66,9 @@ declare module 'react-native-beacons-manager' {
       flag: boolean
     ): void;
 
+    startForegroundService(notifData: NotificationData): Promise<any>;
+    stopForegroundService(): Promise<any>;
+
     detectIBeacons(): void;
 
     detectAltBeacons(): void;
@@ -69,6 +83,18 @@ declare module 'react-native-beacons-manager' {
 
     detectCustomBeaconLayout(
       parser: number
+    ): void;
+
+    setDebug(
+      debug: boolean
+    ): void;
+
+    setEnableScheduledScanJobs(
+      enableScanJobs: boolean
+    ): void;
+
+    setBackgroundMode(
+      newMode: boolean
     ): void;
 
     setBackgroundScanPeriod(
