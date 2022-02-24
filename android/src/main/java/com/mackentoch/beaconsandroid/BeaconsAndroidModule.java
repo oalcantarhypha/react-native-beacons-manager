@@ -81,9 +81,6 @@ public class BeaconsAndroidModule extends ReactContextBaseJavaModule implements 
           this.mBeaconManager.stopRangingBeacons(region);
         }
 
-        this.mBeaconManager.removeAllMonitorNotifiers();
-        this.mBeaconManager.removeAllRangeNotifiers();
-
         Log.d(TAG, "setting up background monitoring in app onCreate");
         this.mBeaconManager.addMonitorNotifier(this);
         this.mBeaconManager.addRangeNotifier(this);
@@ -186,8 +183,6 @@ public class BeaconsAndroidModule extends ReactContextBaseJavaModule implements 
           mBeaconManager.stopRangingBeacons(region);
 
         }
-        mBeaconManager.removeAllRangeNotifiers();
-        mBeaconManager.removeAllMonitorNotifiers();
       }
       mBeaconManager.disableForegroundServiceScanning();
       mBeaconManager.setEnableScheduledScanJobs(true);
