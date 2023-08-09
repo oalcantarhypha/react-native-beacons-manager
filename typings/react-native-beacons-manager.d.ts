@@ -1,3 +1,5 @@
+import {DeviceEventEmitterStatic} from 'react-native'
+
 declare module 'react-native-beacons-manager' {
 
   export interface BeaconRegion {
@@ -175,8 +177,14 @@ declare module 'react-native-beacons-manager' {
     requestStateForRegion(
       region: BeaconRegion
     ): void;
+
+    BeaconsEventEmitter: BeaconEventEmiter
   }
 
   const beacons: Beacons;
   export default beacons;
+}
+
+interface BeaconEventEmiter implements DeviceEventEmitterStatic {
+  addListener<T>(type: string, listener: (data: T) => void, context?: any): EmitterSubscription;
 }
